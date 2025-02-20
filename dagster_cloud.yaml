@@ -1,0 +1,7 @@
+locations:
+  - location_name: dagster-serverless-dev
+    build:
+      directory: ./basic-dbt-project/basic_dbt_project
+    code_source:
+      module_name: basic_dbt_project
+
