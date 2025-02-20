@@ -44,15 +44,15 @@ jobs:
         if: steps.prerun.outputs.result == 'pex-deploy'
         run: |
           echo "--- Before ---"
-          tree -a ./project-repo
+          tree ./project-repo
 
           python -m pip install pip --upgrade
           cd project-repo/basic-dbt-project/basic_dbt_project
           pip install . --upgrade --upgrade-strategy eager                                            ## Install the Python dependencies from the setup.py file, ex: dbt-core and dbt-duckdb
           dagster-dbt project prepare-and-package --file basic_dbt_project/project.py          ## Replace with the project.py location in the Dagster project folder
-          
+          cd - 
           echo "--- After ---"
-          tree -a ./project-repo
+          tree ./project-repo
         shell: bash
 
       - name: Python Executable Deploy
